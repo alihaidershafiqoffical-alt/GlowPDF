@@ -213,6 +213,17 @@ app.add_middleware(
 )
 
 
+@app.get("/")
+@limiter.limit("60/minute")
+def root(request: Request):
+    return {
+        "status": "ok",
+        "service": "GlowPDF Conversion Engine",
+        "version": "1.0.0",
+        "health": "/api/health"
+    }
+
+
 @app.get("/api/health")
 @limiter.limit("60/minute")
 def health(request: Request):

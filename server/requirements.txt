@@ -1,0 +1,16 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+python-multipart>=0.0.9
+pdf2docx>=0.5.8
+pymupdf>=1.23.0
+python-pptx>=1.0.2
+xlsxwriter>=3.2.0
+pdfplumber>=0.11.0
+openpyxl>=3.1.2
+pypdf>=5.0.0
+pyhanko>=0.30.0
+# OCR Tier 1 engine (wraps Tesseract CLI — requires tesseract-ocr system package)
+ocrmypdf>=16.0.0
+# Used by compress_pdf_multitier for image re-encoding during PDF compression
+Pillow>=10.0.0
+slowapi>=0.1.10

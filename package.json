@@ -1,0 +1,33 @@
+{
+  "name": "glow-pdf",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "server": "node -e \"const fs=require('fs'),{spawn}=require('child_process');const py=fs.existsSync('server/.venv/Scripts/python.exe')?'server/.venv/Scripts/python.exe':fs.existsSync('server/.venv/bin/python')?'server/.venv/bin/python':'python';const p=spawn(py,['server/main.py'],{stdio:'inherit'});p.on('exit',c=>process.exit(c||0));\""
+  },
+  "dependencies": {
+    "@cantoo/pdf-lib": "^2.11.1",
+    "docx": "^9.7.1",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.46.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.3.289",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/jszip": "^3.4.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}

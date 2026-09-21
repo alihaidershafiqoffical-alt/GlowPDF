@@ -1,0 +1,1 @@
+async function e(e,t){let n=e.startsWith(`/`)?e:`/${e}`;return fetch(n,t)}export{e as t};

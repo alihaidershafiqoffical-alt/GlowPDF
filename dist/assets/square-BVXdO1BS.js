@@ -1,0 +1,1 @@
+import{C as e}from"./index-DIFD3WOF.js";var t={name:`check`,size:24,node:[[`path`,{d:`M20 6 9 17l-5-5`,key:`1gmf2c`}]]};t.node;var n=e(t),r={name:`square`,size:24,node:[[`rect`,{width:`18`,height:`18`,x:`3`,y:`3`,rx:`2`,key:`afitv7`}]]};r.node;var i=e(r);export{n,i as t};

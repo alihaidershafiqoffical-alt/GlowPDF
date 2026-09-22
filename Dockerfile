@@ -20,15 +20,22 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 #    Ordered to maximise Docker layer cache reuse across rebuilds.
 # ------------------------------------------------------------------------------
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    # Build tools & headers for compiling Python wheels cleanly
+    build-essential \
+    gcc \
+    python3-dev \
+    libffi-dev \
     # LibreOffice headless (Writer / Calc / Impress → PDF)
     libreoffice \
     # Ghostscript (PDF compression, PDF/A compliance)
     ghostscript \
     # QPDF (PDF structural repair & linearization)
     qpdf \
-    # Tesseract OCR engine + English language data
+    # Tesseract OCR engine + English language data + OCR helpers
     tesseract-ocr \
     tesseract-ocr-eng \
+    pngquant \
+    unpaper \
     # Chromium headless (HTML/URL → PDF rendering)
     chromium \
     # Fonts required for correct PDF rendering across all tools
@@ -62,7 +69,7 @@ WORKDIR /app
 # ------------------------------------------------------------------------------
 COPY server/requirements.txt /app/server/requirements.txt
 
-RUN pip install --upgrade pip --no-cache-dir \
+RUN pip install --upgrade pip setuptools wheel --no-cache-dir \
     && pip install --no-cache-dir -r /app/server/requirements.txt \
     && pip cache purge
 

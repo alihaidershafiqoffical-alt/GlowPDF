@@ -154,6 +154,8 @@ def validate_file_upload(
 # ------------------------------------------------------------------------------
 _raw_origins = os.environ.get("ALLOWED_ORIGINS", "")
 _base_origins = [
+    "https://glow-pdf-pi.vercel.app",
+    "https://glow-pdf-pi.vercel.app/",
     "https://glow-pdf-three.vercel.app",
     "https://glow-pdf-three.vercel.app/",
     "http://localhost:5173",

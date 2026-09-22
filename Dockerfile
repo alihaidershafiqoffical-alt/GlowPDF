@@ -93,22 +93,9 @@ EXPOSE ${PORT}
 # 8. Docker health check
 # ------------------------------------------------------------------------------
 HEALTHCHECK --interval=30s --timeout=15s --start-period=90s --retries=3 \
-    CMD curl -f http://localhost:${PORT}/api/health || exit 1
+    CMD curl -f http://127.0.0.1:${PORT:-8000}/api/health || exit 1
 
 # ------------------------------------------------------------------------------
 # 9. Start FastAPI via Uvicorn
-#
-#    IMPORTANT RAM rationale (Blitz.cloud free = 2 GB):
-#    - 1 Uvicorn worker keeps baseline RAM at ~120 MB
-#    - LibreOffice peak per conversion: ~350-500 MB
-#    - Chromium headless peak: ~400-600 MB
-#    - Python libs + overhead: ~150-200 MB
-#    - With 1 worker and semaphore=3 we stay safely under 2 GB
-#    - Do NOT increase workers without upgrading RAM allocation
 # ------------------------------------------------------------------------------
-CMD uvicorn server.main:app \
-        --host 0.0.0.0 \
-        --port ${PORT} \
-        --workers 1 \
-        --log-level info \
-        --no-access-log
+CMD ["sh", "-c", "uvicorn server.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1 --log-level info"]
